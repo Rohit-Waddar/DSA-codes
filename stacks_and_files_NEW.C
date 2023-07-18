@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define max 5
+#define max 6
 
 typedef struct
 {
@@ -10,7 +10,7 @@ typedef struct
 
 void initstack(stack *s)
 {
-   s->top=-1;
+   s->top=0;
 }
 
 int isFull(stack *s)
@@ -20,19 +20,22 @@ int isFull(stack *s)
 
 void push(stack *s, int e)
 {
-    s->top++;
+
     s->element[s->top]=e;
+     s->top++;
 }
 
 int isEmpty(stack *s)
 {
-           return  (s->top==-1);
+           return  (s->top==0);
 }
 
 int pop(stack *s)
 {
+
+     s->top--;
      int e=s->element[s->top];
-      s->top--;
+
      return e;
 }
 
@@ -45,7 +48,7 @@ int peek(stack *s)
 void display(stack *s)
 {
     FILE * fp4 = fopen("stack1.txt","w");
-    if((s->top )==-1)
+    if((s->top )==0)
     {
          printf("Stack is empty. \n");
     }
